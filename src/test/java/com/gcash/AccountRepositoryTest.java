@@ -42,8 +42,8 @@ public class AccountRepositoryTest {
     }
 
     @Test
-    void successfulGetNumberofAccounts() {
-        //Verify and kick
+    void successfulGetNumberOfAccounts() {
+        //Setup and kick
         AccountRepository repository = new AccountRepository();
         String id0 = repository.createAccount("Derick", 89.9);
         String id1 = repository.createAccount("Derick", 89.9);
