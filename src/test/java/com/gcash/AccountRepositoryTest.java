@@ -14,7 +14,7 @@ public class AccountRepositoryTest {
 
         //Verify
         Assertions.assertEquals(1, repository.getNumberOfAccounts());
-        Assertions.assertEquals("Derick", repository.getAccount(accountId).name());
+        Assertions.assertEquals("Derick", repository.getAccount(accountId).getName());
     }
 
     @Test
@@ -23,8 +23,8 @@ public class AccountRepositoryTest {
 
         String accountId = repository.createAccount("Derick",89.9);
 
-        Assertions.assertEquals("Derick", repository.getAccount(accountId).name());
-        Assertions.assertEquals(89.9, repository.getAccount(accountId).balance());
+        Assertions.assertEquals("Derick", repository.getAccount(accountId).getName());
+        Assertions.assertEquals(89.9, repository.getAccount(accountId).getBalance());
         Assertions.assertEquals(null, repository.getAccount("randomid"));
     }
 
@@ -59,4 +59,17 @@ public class AccountRepositoryTest {
         //Verify
         Assertions.assertEquals(3, repository.getNumberOfAccounts());
     }
+
+    //Lab1 Activity
+    @Test
+    public void testNoRegisteredAccount() {
+        //Setup
+        AccountRepository repository = new AccountRepository();
+
+        // Initially, there should be no registered accounts
+        boolean expectedResult = true;
+        boolean actualResult = repository.noRegisteredAccount();
+        Assertions.assertEquals(expectedResult, actualResult);
+    }
+
 }
