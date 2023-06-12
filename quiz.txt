@@ -1,0 +1,15 @@
+Quiz 1
+
+1 - Unit Testing = testing per component of code
+2 - Integration Testing = testing the interaction and integration of the different components of the code
+3 - System Testing = is testing system compliance to make sure the completed system is working; resembles prod environment
+4 - Acceptance Testing = is testing on the customer/user side based on the criteria/requirements
+
+5 - FALSE
+
+6 - JUnit Jupiter
+
+7 - assertEquals = check if two values are equal
+8 - assertTrue = verify if condition is True
+9 - assertFalse = verify if condition is False
+10 - assertNull = ensures that the object reference is null
