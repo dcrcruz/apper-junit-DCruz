@@ -31,7 +31,8 @@ public class AccountRepositoryTest {
 
         Assertions.assertEquals("Derick", repository.getAccount(accountId).getName());
         Assertions.assertEquals(89.9, repository.getAccount(accountId).getBalance());
-        Assertions.assertEquals(null, repository.getAccount("randomid"));
+        //Assertions.assertEquals(null, repository.getAccount("randomid"));
+        Assertions.assertNull(repository.getAccount("randomid")); // simplified above
         Assertions.assertNull(repository.getAccount("randomid")); // day2 lec; Null
     }
 
