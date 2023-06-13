@@ -3,6 +3,7 @@ package com.gcash;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class AccountRepository {
     private final List<Account> accounts = new ArrayList<>();
@@ -42,4 +43,14 @@ public class AccountRepository {
         return accounts.isEmpty();
     }
 
+    public void deleteAllAccounts() {
+        accounts.clear();
+    }
+
+    public List<String> getAllAccountNames() {
+        return accounts
+                .stream()
+                .map(Account::getName)
+                .collect(Collectors.toList());
+    }
 }

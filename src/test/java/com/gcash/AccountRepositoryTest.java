@@ -1,7 +1,11 @@
 package com.gcash;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountRepositoryTest {
     @Test
@@ -15,9 +19,11 @@ public class AccountRepositoryTest {
         //Verify
         Assertions.assertEquals(1, repository.getNumberOfAccounts());
         Assertions.assertEquals("Derick", repository.getAccount(accountId).getName());
+        Assertions.assertNotNull(accountId); // day2 lec; notNull
     }
 
     @Test
+    @DisplayName("Validation of get accounts") // Reporting
     void successfulGetAccount() {
         AccountRepository repository = new AccountRepository();
 
@@ -26,6 +32,7 @@ public class AccountRepositoryTest {
         Assertions.assertEquals("Derick", repository.getAccount(accountId).getName());
         Assertions.assertEquals(89.9, repository.getAccount(accountId).getBalance());
         Assertions.assertEquals(null, repository.getAccount("randomid"));
+        Assertions.assertNull(repository.getAccount("randomid")); // day2 lec; Null
     }
 
     @Test
@@ -70,6 +77,28 @@ public class AccountRepositoryTest {
         boolean expectedResult = true;
         boolean actualResult = repository.noRegisteredAccount();
         Assertions.assertEquals(expectedResult, actualResult);
+    }
+
+    // list, should be in same order
+    @Test
+    void getAllAccountNames() {
+        AccountRepository accountRepository = new AccountRepository();
+        accountRepository.createAccount("Orvyl", 100.0);
+        accountRepository.createAccount("Eishi", 100.0);
+        accountRepository.createAccount("James", 100.0);
+        accountRepository.createAccount("Janet", 100.0);
+        accountRepository.createAccount("John", 100.0);
+
+        List<String> allAccountNames = accountRepository.getAllAccountNames();
+
+        List<String> expectedNames = new ArrayList<>();
+        expectedNames.add("Orvyl");
+        expectedNames.add("Eishi");
+        expectedNames.add("James");
+        expectedNames.add("Janet");
+        expectedNames.add("John");
+
+        Assertions.assertIterableEquals(expectedNames, allAccountNames);
     }
 
 }

@@ -1,19 +1,41 @@
 package com.gcash;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class BalanceServiceTest {
 
     private BalanceService balanceService;
     private AccountRepository accountRepository;
 
-    @BeforeEach
-    public void setup() {
-        // Initialize the BalanceService with a mock AccountRepository
+//    @BeforeEach
+//    public void setup() {
+//        // Initialize the BalanceService with a mock AccountRepository
+//        accountRepository = new AccountRepository();
+//        balanceService = new BalanceService(accountRepository);
+//    }
+
+    // Before Each, After Each, After All, Before All
+    @BeforeEach // life cycle: per method executions
+    void setup() {
+        System.out.println("Setting up...");
         accountRepository = new AccountRepository();
         balanceService = new BalanceService(accountRepository);
+    }
+
+    @AfterEach
+    void cleanup() {
+        System.out.println("Cleaning up...");
+        accountRepository.deleteAllAccounts();
+    }
+
+    @BeforeAll
+    static void globalSetup() {
+        System.out.println("Global setup");
+    }
+
+    @AfterAll
+    static void globalCleaning() {
+        System.out.println("Global cleaning");
     }
 
     @Test
